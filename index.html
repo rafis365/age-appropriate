@@ -1,142 +1,1223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Age Calculator | বয়স গণনা</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CDN -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Precision Age Calculator | Accurate Chronological Analysis</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Add Bengali Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Add Professional Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: linear-gradient(to right, #e3f2fd, #f8f9fa);
-      padding: 20px;
+    :root{
+      --primary: #7c3aed;
+      --primary-dark: #6d28d9;
+      --secondary: #475569;
+      --accent: #8b5cf6;
+      --success: #10b981;
+      --info: #0ea5e9;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --card-bg: #ffffff;
+      --soft-bg: #f8fafc;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --page-grad: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      --card-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      --bengali-font: 'Hind Siliguri', sans-serif;
+      --professional-font: 'Poppins', sans-serif;
     }
-    .result-box {
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      border-left: 6px solid #0d6efd;
+    
+    /* Dark Theme Variables */
+    .dark-theme {
+      --primary: #8b5cf6;
+      --primary-dark: #7c3aed;
+      --secondary: #94a3b8;
+      --accent: #a78bfa;
+      --success: #34d399;
+      --info: #38bdf8;
+      --warning: #fbbf24;
+      --danger: #f87171;
+      --card-bg: #1e293b;
+      --soft-bg: #334155;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border: #475569;
+      --page-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      --card-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
-    .highlight {
-      font-weight: bold;
-      color: #0d6efd;
+
+    html,body{
+      height:100%;
+      font-family: var(--professional-font);
     }
-    .calendar-box {
-      background: #f1f3f5;
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 20px;
+    body{
+      background:var(--page-grad);
+      padding:20px;
+      transition: all 0.4s ease;
+      color: var(--text-primary);
     }
-    .calendar-title {
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #495057;
+    .bengali-font {
+      font-family: var(--bengali-font) !important;
+      font-weight: 500;
     }
-    .credit {
-      text-align: center;
-      margin-top: 30px;
-      font-style: italic;
-      color: #6c757d;
-    }
+
+    /* Watermark for Print - HEART SYMBOL REMOVED */
     @media print {
-      body { background: #fff; }
-      .btn, input, .form-label, .form-control { display: none !important; }
-      .result-box { box-shadow: none; border: none; }
-      .credit { display: block; font-size: 14px; }
+      body::before {
+        content: "Crafted by Rafis";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        font-size: 60px;
+        color: rgba(0, 0, 0, 0.08) !important;
+        z-index: 9999;
+        font-weight: bold;
+        white-space: nowrap;
+        pointer-events: none;
+        font-family: var(--professional-font);
+        opacity: 0.7;
+      }
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+    }
+
+    /* App Card Styling */
+    .app-card{
+      background:var(--card-bg);
+      border-radius:20px;
+      padding:2.5rem;
+      box-shadow:var(--card-shadow);
+      border: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .dark-theme .app-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    /* Calendar Boxes */
+    .calendar-box{
+      background:var(--soft-bg);
+      border-radius:15px;
+      padding:1.5rem;
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s ease;
+    }
+    .calendar-box:hover {
+      transform: translateX(5px);
+    }
+
+    /* Typography */
+    .calendar-title{
+      font-weight:600;
+      color:var(--text-primary);
+      margin-bottom:12px;
+      font-size:1.1rem;
+    }
+    .highlight{
+      font-weight:700;
+      color:var(--accent);
+      font-size:1.05em;
+    }
+    .muted{
+      color:var(--text-muted);
+      font-size:0.95em;
+    }
+    
+    /* Date Display Colors - FIXED */
+    .date-display {
+      color: #1e40af !important; /* Dark blue for better visibility */
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .date-detail {
+      color: #374151 !important; /* Dark gray for details */
+      font-size: 0.9rem;
+    }
+    
+    /* Dividers */
+    .divider{
+      height:2px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin:2rem 0;
+      border-radius:2px;
+      opacity:0.6;
+    }
+
+    /* Professional Footer */
+    .professional-footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 2rem 1rem 1rem;
+      border-top: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--soft-bg), transparent);
+      border-radius: 0 0 20px 20px;
+    }
+    .footer-content {
+      font-family: var(--professional-font);
+      color: var(--text-muted);
+    }
+    .footer-brand {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+    }
+    .footer-copyright {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+    .footer-heart {
+      color: var(--danger);
+      animation: heartbeat 2s infinite;
+      margin: 0 0.25rem;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Countdown Animation */
+    .countdown-item {
+      transition: all 0.5s ease-in-out;
+      transform-origin: center;
+    }
+    .countdown-pulse {
+      animation: pulse 1s ease-in-out;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Fade-in Animation */
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    /* Action Buttons Styling */
+    .action-buttons {
+      background: var(--soft-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin: 2rem 0 1rem;
+      border: 2px dashed var(--accent);
+      opacity: 0.9;
+    }
+    .action-buttons:hover {
+      opacity: 1;
+      border-style: solid;
+    }
+
+    /* Share Buttons Container */
+    .share-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .share-btn {
+      border-radius: 10px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      text-align: center;
+      width: 100%;
+    }
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Dark Theme Enhancements */
+    .dark-theme .calendar-box {
+      background: var(--soft-bg);
+      border-left: 4px solid var(--accent);
+    }
+    .dark-theme .list-group-item {
+      background-color: var(--soft-bg);
+      border-color: var(--border);
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+    .dark-theme .list-group-item:hover {
+      background-color: #475569;
+    }
+    .dark-theme .form-control {
+      background-color: var(--soft-bg);
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+    .dark-theme .form-control:focus {
+      background-color: #475569;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
+    }
+    .dark-theme .btn-outline-secondary {
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    /* Button Enhancements */
+    .btn {
+      border-radius: 10px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--professional-font);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+    }
+    .btn-success {
+      background: linear-gradient(135deg, var(--success), #059669);
+      border: none;
+    }
+    .btn-info {
+      background: linear-gradient(135deg, var(--info), #0284c7);
+      border: none;
+    }
+    .btn-warning {
+      background: linear-gradient(135deg, var(--warning), #d97706);
+      border: none;
+    }
+    .btn-danger {
+      background: linear-gradient(135deg, var(--danger), #dc2626);
+      border: none;
+    }
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    /* Form Controls */
+    .form-control {
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border);
+      transition: all 0.3s ease;
+      font-family: var(--professional-font);
+      color: var(--text-primary);
+      background: var(--card-bg);
+    }
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
+    }
+
+    /* List Group Enhancements */
+    .list-group-item {
+      border-radius: 8px !important;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      background: var(--card-bg);
+      color: var(--text-primary);
+    }
+    .list-group-item:hover {
+      background-color: var(--soft-bg);
+      transform: translateX(5px);
+    }
+
+    /* Time Input Styling */
+    .time-input-group {
+      background: var(--soft-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .time-input-label {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Print Styles */
+    @media print{
+      body{
+        background:#fff !important;
+        padding:0;
+        color: #000 !important;
+      }
+      .no-print{
+        display:none !important;
+      }
+      .app-card{
+        box-shadow:none !important;
+        border:none !important;
+        padding:1rem;
+        background: #fff !important;
+      }
+      .professional-footer{
+        display: none !important;
+      }
+      
+      /* Main Title - Force Dark Blue in Print */
+      .professional-title {
+        color: #1e40af !important;
+        text-shadow: none !important;
+        -webkit-text-fill-color: #1e40af !important;
+      }
+      
+      /* Date Display Colors for Print */
+      .date-display {
+        color: #1e40af !important; /* Dark blue for print */
+        font-weight: bold;
+      }
+      .date-detail {
+        color: #374151 !important; /* Dark gray for print */
+      }
+      
+      /* Hide input sections and labels from print */
+      .form-label, .form-text, .birth-time-input, .time-input-group,
+      .example-date, .input-section {
+        display: none !important;
+      }
+      
+      /* Ensure text colors are proper for print */
+      .list-group-item, .small-muted, .muted, .highlight, .section-title,
+      .calendar-title, .text-primary, .text-success, .text-info, .text-warning {
+        color: #000 !important;
+        background: #fff !important;
+      }
+      
+      .highlight {
+        color: #1e40af !important; /* Dark blue for highlights in print */
+        font-weight: bold;
+      }
+      
+      /* Hide calendar sections in print */
+      .calendar-section { 
+        display: none !important; 
+      }
+      /* Hide zodiac info in print */
+      .zodiac-info { 
+        display: none !important; 
+      }
+      /* Keep next birthday information in print */
+      .birthday-countdown { 
+        display: block !important; 
+      }
+      .btn, .action-buttons {
+        display: none !important;
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px){
+      .app-card{
+        padding:1.5rem;
+        border-radius:15px;
+      }
+      h1{
+        font-size:1.5rem;
+      }
+      .calendar-box{
+        padding:1rem;
+      }
+    }
+
+    @media (max-width: 575.98px){
+      body{
+        padding:10px;
+      }
+      .app-card{
+        padding:1.25rem;
+        border-radius:12px;
+      }
+      h1{
+        font-size:1.25rem;
+      }
+    }
+
+    /* Text Styling */
+    .small-muted{
+      font-size:.92rem;
+      color:var(--text-muted);
+    }
+    
+    /* Zodiac Styles */
+    .zodiac-sign {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      background: var(--soft-bg);
+      border-radius: 25px;
+      margin: 5px 0;
+      border: 1px solid var(--border);
+    }
+    
+    /* Loading Animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--soft-bg);
+      border-top: 3px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Professional Typography - FIXED FOR WEB VIEW */
+    .professional-title {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: white !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-family: var(--professional-font);
+    }
+    .dark-theme .professional-title {
+      color: white !important;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      font-family: var(--professional-font);
+    }
+
+    /* Example Date Buttons */
+    .example-date {
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .example-date:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Icon Styling */
+    .bi {
+      margin-right: 5px;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1055;
+    }
+    .toast {
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Professional Color Classes */
+    .text-primary { color: var(--primary) !important; }
+    .text-success { color: var(--success) !important; }
+    .text-info { color: var(--info) !important; }
+    .text-warning { color: var(--warning) !important; }
+    .text-danger { color: var(--danger) !important; }
+    .text-muted { color: var(--text-muted) !important; }
+
+    .bg-primary { background-color: var(--primary) !important; }
+    .bg-success { background-color: var(--success) !important; }
+    .bg-info { background-color: var(--info) !important; }
+    .bg-warning { background-color: var(--warning) !important; }
+    .bg-danger { background-color: var(--danger) !important; }
+
+    /* Birth Time Input */
+    .birth-time-input {
+      background: var(--soft-bg);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 1rem;
+      border: 2px solid var(--border);
+    }
+
+    /* Input Section for Print Control */
+    .input-section {
+      /* This class wraps the input area for easy print control */
     }
   </style>
 </head>
 <body>
+  <!-- Toast Container for Notifications -->
+  <div class="toast-container"></div>
+
   <div class="container">
-    <h2 class="text-center text-primary mb-4">🧮 Age Calculator | বয়স গণনা</h2>
-    <div class="mb-3">
-      <label for="dob" class="form-label">📅 Date of Birth | জন্ম তারিখ</label>
-      <input type="date" id="dob" class="form-control">
-    </div>
-    <div class="d-grid gap-2 mb-4">
-      <button onclick="startLiveAge()" class="btn btn-primary">🔍 Calculate Age | বয়স দেখুন</button>
-    </div>
+    <h1 class="text-center mb-4 fade-in professional-title">
+      <i class="bi bi-calculator"></i>Precision Age Calculator | বয়স গণনা
+    </h1>
 
-    <div class="result-box" id="result" style="display:none;">
-      <div class="row">
-        <div class="col-md-6 col-12">
-          <div class="calendar-box">
-            <div class="calendar-title">📆 Current Date Calendar | বর্তমান ক্যালেন্ডার</div>
-            <div id="currentCalendar" class="highlight"></div>
+    <div class="app-card fade-in">
+      <!-- Input Section - Hidden in Print -->
+      <div class="input-section no-print">
+        <div class="row g-3 align-items-end">
+          <div class="col-lg-8 col-md-7 col-12">
+            <label for="dob" class="form-label small-muted fw-semibold">
+              <i class="bi bi-calendar3"></i>Date of Birth | জন্ম তারিখ
+            </label>
+            <input id="dob" type="date" class="form-control no-print form-control-lg" />
+            
+            <!-- Birth Time Input -->
+            <div class="birth-time-input no-print">
+              <label class="form-label small-muted fw-semibold">
+                <i class="bi bi-clock"></i>Birth Time | জন্ম সময় (Optional)
+              </label>
+              <div class="row g-2 align-items-center">
+                <div class="col-md-4 col-12">
+                  <input type="time" id="birthTime" class="form-control" value="00:00">
+                </div>
+                <div class="col-md-8 col-12">
+                  <div class="form-text">
+                    <i class="bi bi-info-circle"></i> Select your birth time for precise calculation
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-text small-muted mt-1">
+              <i class="bi bi-info-circle"></i>Select your birth date and time for accurate age calculation
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-5 col-12 d-grid">
+            <button id="startBtn" class="btn btn-primary btn-lg no-print">
+              <span id="btnText"><i class="bi bi-calculator-fill"></i>Calculate Age | বয়স দেখুন</span>
+              <span id="btnLoading" class="loading" style="display:none;"></span>
+            </button>
           </div>
         </div>
-        <div class="col-md-6 col-12">
-          <div class="calendar-box">
-            <div class="calendar-title">🎂 Birth Date Calendar | জন্ম তারিখের ক্যালেন্ডার</div>
-            <div id="dobCalendar" class="highlight"></div>
+
+        <!-- Example Dates -->
+        <div class="row mt-4 no-print">
+          <div class="col-12">
+            <label class="form-label small-muted fw-semibold mb-2">
+              <i class="bi bi-lightning"></i>Quick Examples:
+            </label>
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-sm btn-outline-primary example-date" data-date="1990-01-01">
+                <i class="bi bi-1-circle"></i>1990
+              </button>
+              <button class="btn btn-sm btn-outline-primary example-date" data-date="2000-06-15">
+                <i class="bi bi-2-circle"></i>2000
+              </button>
+              <button class="btn btn-sm btn-outline-primary example-date" data-date="2010-12-25">
+                <i class="bi bi-3-circle"></i>2010
+              </button>
+              <button class="btn btn-sm btn-outline-primary example-date" data-date="1985-03-08">
+                <i class="bi bi-4-circle"></i>1985
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <h5 class="mt-4 text-info">📊 Age Breakdown | বয়স বিশ্লেষণ:</h5>
-      <ul class="list-group mb-3">
-        <li class="list-group-item">🧍 Age: <span id="years" class="highlight"></span> years, <span id="months" class="highlight"></span> months, <span id="days" class="highlight"></span> days</li>
-        <li class="list-group-item">📅 Or: <span id="totalMonths" class="highlight"></span> months, <span id="extraDays" class="highlight"></span> days</li>
-        <li class="list-group-item">📆 Or: <span id="weeks" class="highlight"></span> weeks, <span id="weekDays" class="highlight"></span> days</li>
-        <li class="list-group-item">📆 Or: <span id="totalDays" class="highlight"></span> days</li>
-        <li class="list-group-item">⏰ Or: <span id="hours" class="highlight"></span> hours</li>
-        <li class="list-group-item">⏱️ Or: <span id="minutes" class="highlight"></span> minutes</li>
-        <li class="list-group-item">⏳ Or: <span id="seconds" class="highlight"></span> seconds</li>
-      </ul>
+      <div id="result" style="display:none;margin-top:30px">
+        <!-- Calendar Section - Hidden in Print -->
+        <div class="row calendar-section">
+          <div class="col-md-6 col-12 mb-3">
+            <div class="calendar-box h-100">
+              <div class="calendar-title professional-title">
+                <i class="bi bi-calendar-check"></i>Current Date & Time | বর্তমান তারিখ ও সময়
+              </div>
+              <div id="currentCalendar" class="date-display fs-5"></div>
+              <div id="currentCalendarDetail" class="date-detail small-muted mt-2"></div>
+            </div>
+          </div>
 
-      <div class="d-grid gap-2 mb-3">
-        <button onclick="window.print()" class="btn btn-outline-secondary">🖨️ Print Result | প্রিন্ট করুন</button>
+          <div class="col-md-6 col-12 mb-3">
+            <div class="calendar-box h-100">
+              <div class="calendar-title professional-title">
+                <i class="bi bi-gift"></i>Birth Date & Time | জন্ম তারিখ ও সময়
+              </div>
+              <div id="dobCalendar" class="date-display fs-5"></div>
+              <div id="dobCalendarDetail" class="date-detail small-muted mt-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider calendar-section"></div>
+
+        <!-- Zodiac Sign - Hidden in Print -->
+        <div class="mb-4 zodiac-info">
+          <h5 class="text-info section-title">
+            <i class="bi bi-stars"></i>Zodiac Information | রাশিচক্র
+          </h5>
+          <div id="zodiacInfo" class="small-muted"></div>
+        </div>
+
+        <h5 class="text-info section-title">
+          <i class="bi bi-graph-up"></i>Age Analysis | বয়স বিশ্লেষণ
+        </h5>
+        <div class="row">
+          <div class="col-12">
+            <ul class="list-group">
+              <li class="list-group-item small-muted">
+                <i class="bi bi-person"></i>Chronological Age: 
+                <span id="years" class="highlight"></span> years, 
+                <span id="months" class="highlight"></span> months, 
+                <span id="days" class="highlight"></span> days
+              </li>
+              <li class="list-group-item small-muted">
+                <i class="bi bi-calendar-month"></i>Total Duration: 
+                <span id="totalMonths" class="highlight"></span> months, 
+                <span id="extraDays" class="highlight"></span> days
+              </li>
+              <li class="list-group-item small-muted">
+                <i class="bi bi-calendar-week"></i>Weekly Breakdown: 
+                <span id="weeks" class="highlight"></span> weeks, 
+                <span id="weekDays" class="highlight"></span> days
+              </li>
+              <li class="list-group-item small-muted">
+                <i class="bi bi-calendar-day"></i>Cumulative Days: 
+                <span id="totalDays" class="highlight"></span> days
+              </li>
+              <li class="list-group-item small-muted">
+                <i class="bi bi-clock"></i>Hours Lived: 
+                <span id="hours" class="highlight"></span> hours
+              </li>
+              <li class="list-group-item small-muted">
+                <i class="bi bi-clock-history"></i>Minutes Lived: 
+                <span id="minutes" class="highlight"></span> minutes
+              </li>
+              <li class="list-group-item small-muted">
+                <i class="bi bi-stopwatch"></i>Seconds Lived: 
+                <span id="seconds" class="highlight"></span> seconds
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- NEXT BIRTHDAY FOOTER - Visible in Print -->
+        <div class="mt-4 border-top pt-4 birthday-countdown">
+          <h5 class="text-success section-title">
+            <i class="bi bi-balloon"></i>Next Birthday Analysis | পরবর্তী জন্মদিন
+          </h5>
+          <p class="small-muted mb-3">
+            <i class="bi bi-calendar-event"></i>Upcoming Birthday: 
+            <span id="nextBirthdayDate" class="highlight"></span>
+          </p>
+          <div class="row">
+            <div class="col-12">
+              <ul class="list-group">
+                <li class="list-group-item small-muted countdown-item">
+                  <i class="bi bi-sun"></i>Days Remaining: 
+                  <span id="daysLeft" class="highlight"></span>
+                </li>
+                <li class="list-group-item small-muted countdown-item">
+                  <i class="bi bi-clock"></i>Hours Remaining: 
+                  <span id="hoursLeft" class="highlight"></span>
+                </li>
+                <li class="list-group-item small-muted countdown-item">
+                  <i class="bi bi-hourglass-split"></i>Minutes Remaining: 
+                  <span id="minutesLeft" class="highlight"></span>
+                </li>
+                <li class="list-group-item small-muted countdown-item">
+                  <i class="bi bi-stopwatch"></i>Seconds Remaining: 
+                  <span id="secondsLeft" class="highlight"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons no-print">
+          <h5 class="text-center section-title mb-4">
+            <i class="bi bi-share"></i>Share & Export | শেয়ার ও এক্সপোর্ট
+          </h5>
+          <div class="share-buttons">
+            <button class="btn btn-primary share-btn" onclick="printReport()">
+              <i class="bi bi-printer-fill"></i>Print Report
+            </button>
+            <button class="btn btn-success share-btn" onclick="shareToWhatsApp()">
+              <i class="bi bi-whatsapp"></i>Share on WhatsApp
+            </button>
+            <button class="btn btn-info share-btn" onclick="shareToTelegram()">
+              <i class="bi bi-telegram"></i>Share on Telegram
+            </button>
+            <button class="btn btn-primary share-btn" onclick="shareToFacebook()">
+              <i class="bi bi-facebook"></i>Share on Facebook
+            </button>
+            <button class="btn btn-info share-btn" onclick="shareToTwitter()">
+              <i class="bi bi-twitter"></i>Share on Twitter
+            </button>
+            <button class="btn btn-secondary share-btn" onclick="copyToClipboard()">
+              <i class="bi bi-clipboard-check"></i>Copy to Clipboard
+            </button>
+          </div>
+        </div>
+
+        <!-- Professional Footer - Hidden in Print -->
+        <div class="professional-footer no-print">
+          <div class="footer-content">
+            <div class="footer-brand">
+              <i class="bi bi-calculator"></i> Precision Age Calculator
+            </div>
+            <div class="footer-tagline">
+              Advanced Chronological Analysis Tool
+            </div>
+            <div class="footer-copyright">
+              Crafted with <span class="footer-heart">❤️</span> by Rafis 
+              <span class="mx-2">•</span> 
+              Est. <span id="currentYear"></span>
+              <span class="mx-2">•</span>
+              All rights reserved
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="credit">*Made with LoVe by Rafis*</div>
     </div>
   </div>
 
   <script>
-    let dob;
+    // JavaScript code remains exactly the same as previous version
+    let dob = null;
+    let intervalId = null;
 
-    function startLiveAge() {
-      dob = new Date(document.getElementById("dob").value);
-      if (isNaN(dob)) return alert("Please select a valid date!");
-      document.getElementById("result").style.display = "block";
-      updateAge();
-      setInterval(updateAge, 1000);
+    const startBtn = document.getElementById('startBtn');
+    const resultEl = document.getElementById('result');
+    const dobInput = document.getElementById('dob');
+    const birthTimeInput = document.getElementById('birthTime');
+    const btnText = document.getElementById('btnText');
+    const btnLoading = document.getElementById('btnLoading');
+    const currentYearEl = document.getElementById('currentYear');
+
+    // Set current year in footer
+    currentYearEl.textContent = new Date().getFullYear();
+
+    // Event Listeners
+    startBtn.addEventListener('click', startLiveAge);
+
+    // Example date buttons
+    document.querySelectorAll('.example-date').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        dobInput.value = e.target.dataset.date;
+      });
+    });
+
+    // Automatic System Theme Detection
+    function detectSystemTheme() {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-theme');
+      } else {
+        document.body.classList.remove('dark-theme');
+      }
     }
 
-    function updateAge() {
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      mediaQuery.addEventListener('change', detectSystemTheme);
+    }
+
+    function startLiveAge(){
+      const val = dobInput.value;
+      if(!val) { 
+        showToast('Please select a valid date of birth.', 'warning');
+        return; 
+      }
+
+      // Get time from time input
+      const timeValue = birthTimeInput.value;
+      let hours = 0, minutes = 0;
+      
+      if (timeValue) {
+        const [timeHours, timeMinutes] = timeValue.split(':');
+        hours = parseInt(timeHours) || 0;
+        minutes = parseInt(timeMinutes) || 0;
+      }
+
+      // Create date with time
+      const dateTimeString = `${val}T${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`;
+      dob = new Date(dateTimeString);
+      
+      if (isNaN(dob)) { 
+        showToast('Invalid date format selected.', 'error');
+        return; 
+      }
+
+      // Show loading state
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline-block';
+
+      setTimeout(() => {
+        // Hide loading and show result
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        
+        resultEl.style.display = 'block';
+        if (intervalId) clearInterval(intervalId);
+        updateAge();
+        intervalId = setInterval(updateAge, 1000);
+        
+        // Add fade-in animation to result
+        resultEl.classList.add('fade-in');
+      }, 800);
+    }
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+
+    function formatTime(date) {
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      return hours + ':' + minutes + ' ' + ampm;
+    }
+
+    function updateAge(){
       const now = new Date();
-      document.getElementById("currentCalendar").textContent = now.toDateString();
-      document.getElementById("dobCalendar").textContent = dob.toDateString();
 
-      let diff = now - dob;
-      if (diff < 0) return;
+      // Calendars basic display
+      document.getElementById('currentCalendar').textContent = now.toDateString() + ' ' + formatTime(now);
+      document.getElementById('currentCalendarDetail').textContent = now.toLocaleString();
 
-      let totalSeconds = Math.floor(diff / 1000);
-      let totalMinutes = Math.floor(totalSeconds / 60);
-      let totalHours = Math.floor(totalMinutes / 60);
-      let totalDays = Math.floor(totalHours / 24);
-      let totalWeeks = Math.floor(totalDays / 7);
-      let weekDays = totalDays % 7;
-      let totalMonths = Math.floor(totalDays / 30.44);
-      let years = Math.floor(totalMonths / 12);
-      let months = totalMonths % 12;
-      let days = totalDays % Math.floor(30.44);
-      let hours = totalHours % 24;
-      let minutes = totalMinutes % 60;
-      let seconds = totalSeconds % 60;
+      document.getElementById('dobCalendar').textContent = dob.toDateString() + ' ' + formatTime(dob);
+      document.getElementById('dobCalendarDetail').textContent = dob.toLocaleString();
 
-      document.getElementById("years").textContent = years;
-      document.getElementById("months").textContent = months;
-      document.getElementById("days").textContent = days;
-      document.getElementById("totalMonths").textContent = years * 12 + months;
-      document.getElementById("extraDays").textContent = days;
-      document.getElementById("weeks").textContent = totalWeeks;
-      document.getElementById("weekDays").textContent = weekDays;
-      document.getElementById("totalDays").textContent = totalDays;
-      document.getElementById("hours").textContent = totalHours;
-      document.getElementById("minutes").textContent = totalMinutes;
-      document.getElementById("seconds").textContent = totalSeconds;
+      // Difference calculations
+      let diffMs = now - dob;
+      if (diffMs < 0) return;
+
+      // Total measures
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const totalDays = Math.floor(totalHours / 24);
+      const totalWeeks = Math.floor(totalDays / 7);
+
+      // Precise years, months, days
+      const ymd = computeYMD(dob, now);
+      const years = ymd.years;
+      const months = ymd.months;
+      const days = ymd.days;
+
+      // Months total
+      const totalMonths = years * 12 + months;
+
+      // Update zodiac information
+      updateZodiacInfo(dob);
+
+      // Populate age breakdown
+      document.getElementById('years').textContent = years;
+      document.getElementById('months').textContent = months;
+      document.getElementById('days').textContent = days;
+      document.getElementById('totalMonths').textContent = totalMonths;
+      document.getElementById('extraDays').textContent = days;
+      document.getElementById('weeks').textContent = totalWeeks;
+      document.getElementById('weekDays').textContent = totalDays % 7;
+      document.getElementById('totalDays').textContent = totalDays;
+      document.getElementById('hours').textContent = totalHours.toLocaleString();
+      document.getElementById('minutes').textContent = totalMinutes.toLocaleString();
+      document.getElementById('seconds').textContent = totalSeconds.toLocaleString();
+
+      // Next birthday calculation
+      updateBirthdayCountdown(now);
     }
+
+    function updateBirthdayCountdown(now) {
+      let nextB = new Date(now.getFullYear(), dob.getMonth(), dob.getDate(), dob.getHours(), dob.getMinutes(), 0, 0);
+      if (nextB <= now) nextB.setFullYear(nextB.getFullYear() + 1);
+      document.getElementById('nextBirthdayDate').textContent = nextB.toDateString() + ' ' + formatTime(nextB);
+
+      let timeToB = nextB - now;
+      let secLeft = Math.floor(timeToB / 1000);
+      let minLeft = Math.floor(secLeft / 60);
+      let hrLeft = Math.floor(minLeft / 60);
+      let dayLeft = Math.floor(hrLeft / 24);
+
+      hrLeft = hrLeft % 24;
+      minLeft = minLeft % 60;
+      secLeft = secLeft % 60;
+
+      // Animate countdown changes
+      animateCountdownValue('daysLeft', dayLeft);
+      animateCountdownValue('hoursLeft', pad(hrLeft));
+      animateCountdownValue('minutesLeft', pad(minLeft));
+      animateCountdownValue('secondsLeft', pad(secLeft));
+    }
+
+    function animateCountdownValue(elementId, newValue) {
+      const element = document.getElementById(elementId);
+      if (element.textContent !== newValue.toString()) {
+        element.parentElement.classList.add('countdown-pulse');
+        element.textContent = newValue;
+        setTimeout(() => {
+          element.parentElement.classList.remove('countdown-pulse');
+        }, 1000);
+      }
+    }
+
+    function updateZodiacInfo(birthDate) {
+      const zodiac = getZodiacSign(birthDate);
+      const birthstone = getBirthstone(birthDate.getMonth());
+      
+      document.getElementById('zodiacInfo').innerHTML = `
+        <div class="zodiac-sign">
+          <span>${zodiac.symbol}</span>
+          <span><strong>${zodiac.name}</strong> | <strong class="bengali-font">${zodiac.bengaliName}</strong> (${zodiac.dates})</span>
+        </div>
+        <div class="mt-2"><i class="bi bi-gem"></i> Birthstone: ${birthstone}</div>
+      `;
+    }
+
+    function getZodiacSign(date) {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      
+      const signs = [
+        { name: "Capricorn", bengaliName: "মকর", symbol: "♑", dates: "Dec 22 - Jan 19" },
+        { name: "Aquarius", bengaliName: "কুম্ভ", symbol: "♒", dates: "Jan 20 - Feb 18" },
+        { name: "Pisces", bengaliName: "মীন", symbol: "♓", dates: "Feb 19 - Mar 20" },
+        { name: "Aries", bengaliName: "মেষ", symbol: "♈", dates: "Mar 21 - Apr 19" },
+        { name: "Taurus", bengaliName: "বৃষ", symbol: "♉", dates: "Apr 20 - May 20" },
+        { name: "Gemini", bengaliName: "মিথুন", symbol: "♊", dates: "May 21 - Jun 20" },
+        { name: "Cancer", bengaliName: "কর্কট", symbol: "♋", dates: "Jun 21 - Jul 22" },
+        { name: "Leo", bengaliName: "সিংহ", symbol: "♌", dates: "Jul 23 - Aug 22" },
+        { name: "Virgo", bengaliName: "কন্যা", symbol: "♍", dates: "Aug 23 - Sep 22" },
+        { name: "Libra", bengaliName: "তুলা", symbol: "♎", dates: "Sep 23 - Oct 22" },
+        { name: "Scorpio", bengaliName: "বৃশ্চিক", symbol: "♏", dates: "Oct 23 - Nov 21" },
+        { name: "Sagittarius", bengaliName: "ধনু", symbol: "♐", dates: "Nov 22 - Dec 21" }
+      ];
+
+      if ((month == 1 && day <= 19) || (month == 12 && day >= 22)) return signs[0];
+      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return signs[1];
+      if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return signs[2];
+      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return signs[3];
+      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return signs[4];
+      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return signs[5];
+      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return signs[6];
+      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return signs[7];
+      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return signs[8];
+      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return signs[9];
+      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return signs[10];
+      return signs[11];
+    }
+
+    function getBirthstone(month) {
+      const stones = [
+        "Garnet", "Amethyst", "Aquamarine", "Diamond", 
+        "Emerald", "Pearl", "Ruby", "Peridot", 
+        "Sapphire", "Tourmaline", "Topaz", "Turquoise"
+      ];
+      return stones[month];
+    }
+
+    function computeYMD(from, to){
+      const f = new Date(from.getFullYear(), from.getMonth(), from.getDate());
+      const t = new Date(to.getFullYear(), to.getMonth(), to.getDate());
+      let years = t.getFullYear() - f.getFullYear();
+      let months = t.getMonth() - f.getMonth();
+      let days = t.getDate() - f.getDate();
+
+      if (days < 0){
+        months -= 1;
+        const prevMonth = new Date(t.getFullYear(), t.getMonth(), 0).getDate();
+        days += prevMonth;
+      }
+      if (months < 0){
+        years -= 1;
+        months += 12;
+      }
+      return {years, months, days};
+    }
+
+    // Share and Print Functions
+    function printReport() {
+      window.print();
+    }
+
+    function shareToWhatsApp() {
+      const ageText = generateShareText();
+      const url = `https://wa.me/?text=${encodeURIComponent(ageText)}`;
+      window.open(url, '_blank');
+      showToast('Opening WhatsApp...', 'success');
+    }
+
+    function shareToTelegram() {
+      const ageText = generateShareText();
+      const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(ageText)}`;
+      window.open(url, '_blank');
+      showToast('Opening Telegram...', 'success');
+    }
+
+    function shareToFacebook() {
+      const ageText = generateShareText();
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(ageText)}`;
+      window.open(url, '_blank');
+      showToast('Opening Facebook...', 'success');
+    }
+
+    function shareToTwitter() {
+      const ageText = generateShareText();
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(ageText)}`;
+      window.open(url, '_blank');
+      showToast('Opening Twitter...', 'success');
+    }
+
+    function copyToClipboard() {
+      const ageText = generateShareText();
+      
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ageText).then(() => {
+          showToast('Age analysis copied to clipboard!', 'success');
+        }).catch(err => {
+          fallbackCopyToClipboard(ageText);
+        });
+      } else {
+        fallbackCopyToClipboard(ageText);
+      }
+    }
+
+    function fallbackCopyToClipboard(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (successful) {
+          showToast('Age analysis copied to clipboard!', 'success');
+        } else {
+          showToast('Failed to copy text. Please copy manually.', 'error');
+        }
+      } catch (err) {
+        document.body.removeChild(textArea);
+        showToast('Failed to copy text. Please copy manually.', 'error');
+      }
+    }
+
+    function generateShareText() {
+      const years = document.getElementById('years').textContent;
+      const months = document.getElementById('months').textContent;
+      const days = document.getElementById('days').textContent;
+      const totalDays = document.getElementById('totalDays').textContent;
+      
+      return `🎉 Age Analysis Results:
+
+📅 Chronological Age: ${years} years, ${months} months, ${days} days
+📊 Total Days Lived: ${totalDays} days
+
+Calculate your age at: ${window.location.href}
+
+#AgeCalculator #BirthdayAnalysis`;
+    }
+
+    // Toast Notification System
+    function showToast(message, type = 'info') {
+      const toastContainer = document.querySelector('.toast-container');
+      const toastId = 'toast-' + Date.now();
+      
+      const bgClass = {
+        'success': 'bg-success',
+        'error': 'bg-danger',
+        'warning': 'bg-warning',
+        'info': 'bg-info'
+      }[type] || 'bg-info';
+
+      const toastHTML = `
+        <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0" role="alert">
+          <div class="d-flex">
+            <div class="toast-body">
+              <i class="bi ${getToastIcon(type)} me-2"></i>${message}
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        </div>
+      `;
+      
+      toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+      
+      const toastElement = document.getElementById(toastId);
+      const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+      toast.show();
+      
+      toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+      });
+    }
+
+    function getToastIcon(type) {
+      const icons = {
+        'success': 'bi-check-circle-fill',
+        'error': 'bi-exclamation-circle-fill',
+        'warning': 'bi-exclamation-triangle-fill',
+        'info': 'bi-info-circle-fill'
+      };
+      return icons[type] || 'bi-info-circle-fill';
+    }
+
+    // Auto-load saved preferences and date
+    (function(){
+      detectSystemTheme();
+
+      const savedDate = localStorage.getItem('agecalc_dob');
+      const savedTime = localStorage.getItem('agecalc_time');
+
+      if (savedDate) {
+        dobInput.value = savedDate;
+      }
+      if (savedTime) {
+        birthTimeInput.value = savedTime;
+      }
+
+      if (savedDate) {
+        setTimeout(() => startLiveAge(), 1000);
+      }
+      
+      dobInput.addEventListener('change', () => {
+        localStorage.setItem('agecalc_dob', dobInput.value || '');
+      });
+      birthTimeInput.addEventListener('change', () => {
+        localStorage.setItem('agecalc_time', birthTimeInput.value);
+      });
+    })();
   </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-        </html>
+</html>
