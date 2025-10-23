@@ -30,6 +30,23 @@
       --card-shadow: 0 8px 32px rgba(0,0,0,0.08);
       --bengali-font: 'Hind Siliguri', sans-serif;
       --professional-font: 'Poppins', sans-serif;
+      
+      /* Enhanced Professional Color Palette */
+      --color-sapphire: #2563eb;
+      --color-emerald: #059669;
+      --color-amethyst: #7c3aed;
+      --color-ruby: #dc2626;
+      --color-amber: #d97706;
+      --color-topaz: #0ea5e9;
+      --color-jade: #10b981;
+      --color-coral: #f97316;
+      --color-pearl: #94a3b8;
+      --color-gold: #f59e0b;
+      --color-silver: #64748b;
+      --color-bronze: #b45309;
+      --color-platinum: #475569;
+      --color-diamond: #e2e8f0;
+      --color-onyx: #1e293b;
     }
     
     /* Dark Theme Variables */
@@ -50,6 +67,23 @@
       --border: #475569;
       --page-grad: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
       --card-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      
+      /* Enhanced Professional Color Palette for Dark Theme */
+      --color-sapphire: #3b82f6;
+      --color-emerald: #10b981;
+      --color-amethyst: #8b5cf6;
+      --color-ruby: #ef4444;
+      --color-amber: #f59e0b;
+      --color-topaz: #0ea5e9;
+      --color-jade: #34d399;
+      --color-coral: #fb923c;
+      --color-pearl: #cbd5e1;
+      --color-gold: #fbbf24;
+      --color-silver: #94a3b8;
+      --color-bronze: #d97706;
+      --color-platinum: #64748b;
+      --color-diamond: #f1f5f9;
+      --color-onyx: #0f172a;
     }
 
     html,body{
@@ -67,7 +101,7 @@
       font-weight: 500;
     }
 
-    /* Watermark for Print - HEART SYMBOL REMOVED */
+    /* Watermark for Print */
     @media print {
       body::before {
         content: "Crafted by Rafis";
@@ -124,13 +158,12 @@
     /* Typography */
     .calendar-title{
       font-weight:600;
-      color:var(--text-primary);
+      color: var(--color-sapphire) !important;
       margin-bottom:12px;
       font-size:1.1rem;
     }
     .highlight{
       font-weight:700;
-      color:var(--accent);
       font-size:1.05em;
     }
     .muted{
@@ -140,12 +173,12 @@
     
     /* Date Display Colors - FIXED */
     .date-display {
-      color: #1e40af !important; /* Dark blue for better visibility */
+      color: var(--color-emerald) !important;
       font-weight: 600;
       font-size: 1.1rem;
     }
     .date-detail {
-      color: #374151 !important; /* Dark gray for details */
+      color: var(--color-silver) !important;
       font-size: 0.9rem;
     }
     
@@ -196,18 +229,10 @@
       50% { transform: scale(1.1); }
     }
 
-    /* Countdown Animation */
+    /* Countdown Animation - REMOVED PULSE EFFECT */
     .countdown-item {
       transition: all 0.5s ease-in-out;
       transform-origin: center;
-    }
-    .countdown-pulse {
-      animation: pulse 1s ease-in-out;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
     }
 
     /* Fade-in Animation */
@@ -298,27 +323,27 @@
       font-family: var(--professional-font);
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg, var(--color-sapphire), var(--color-topaz));
       border: none;
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
     }
     .btn-success {
-      background: linear-gradient(135deg, var(--success), #059669);
+      background: linear-gradient(135deg, var(--color-emerald), var(--color-jade));
       border: none;
     }
     .btn-info {
-      background: linear-gradient(135deg, var(--info), #0284c7);
+      background: linear-gradient(135deg, var(--color-topaz), #0284c7);
       border: none;
     }
     .btn-warning {
-      background: linear-gradient(135deg, var(--warning), #d97706);
+      background: linear-gradient(135deg, var(--color-amber), var(--color-bronze));
       border: none;
     }
     .btn-danger {
-      background: linear-gradient(135deg, var(--danger), #dc2626);
+      background: linear-gradient(135deg, var(--color-ruby), #dc2626);
       border: none;
     }
     .btn-sm {
@@ -545,13 +570,20 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    /* Professional Color Classes */
-    .text-primary { color: var(--primary) !important; }
-    .text-success { color: var(--success) !important; }
-    .text-info { color: var(--info) !important; }
-    .text-warning { color: var(--warning) !important; }
-    .text-danger { color: var(--danger) !important; }
+    /* Professional Color Classes - ENHANCED */
+    .text-primary { color: var(--color-sapphire) !important; }
+    .text-success { color: var(--color-emerald) !important; }
+    .text-info { color: var(--color-topaz) !important; }
+    .text-warning { color: var(--color-amber) !important; }
+    .text-danger { color: var(--color-ruby) !important; }
     .text-muted { color: var(--text-muted) !important; }
+    .text-amethyst { color: var(--color-amethyst) !important; }
+    .text-jade { color: var(--color-jade) !important; }
+    .text-coral { color: var(--color-coral) !important; }
+    .text-gold { color: var(--color-gold) !important; }
+    .text-silver { color: var(--color-silver) !important; }
+    .text-bronze { color: var(--color-bronze) !important; }
+    .text-platinum { color: var(--color-platinum) !important; }
 
     .bg-primary { background-color: var(--primary) !important; }
     .bg-success { background-color: var(--success) !important; }
@@ -572,6 +604,47 @@
     .input-section {
       /* This class wraps the input area for easy print control */
     }
+    
+    /* Name Display in Results */
+    .name-display {
+      font-weight: 700;
+      color: var(--color-amethyst);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      padding: 0.5rem;
+      background: var(--soft-bg);
+      border-radius: 10px;
+      border-left: 4px solid var(--color-amethyst);
+    }
+    
+    /* Enhanced color highlights for list items */
+    .list-group-item:nth-child(1) .highlight { color: var(--color-sapphire) !important; }
+    .list-group-item:nth-child(2) .highlight { color: var(--color-emerald) !important; }
+    .list-group-item:nth-child(3) .highlight { color: var(--color-amethyst) !important; }
+    .list-group-item:nth-child(4) .highlight { color: var(--color-amber) !important; }
+    .list-group-item:nth-child(5) .highlight { color: var(--color-ruby) !important; }
+    .list-group-item:nth-child(6) .highlight { color: var(--color-coral) !important; }
+    .list-group-item:nth-child(7) .highlight { color: var(--color-gold) !important; }
+    
+    /* Next birthday items */
+    .birthday-countdown .list-group-item:nth-child(1) .highlight { color: var(--color-jade) !important; }
+    .birthday-countdown .list-group-item:nth-child(2) .highlight { color: var(--color-topaz) !important; }
+    .birthday-countdown .list-group-item:nth-child(3) .highlight { color: var(--color-bronze) !important; }
+    .birthday-countdown .list-group-item:nth-child(4) .highlight { color: var(--color-platinum) !important; }
+    
+    /* Required field styling */
+    .required-field::after {
+      content: " *";
+      color: var(--color-ruby);
+    }
+    
+    /* Calendar Title Styling - FIXED */
+    .calendar-title.professional-title {
+      color: var(--color-sapphire) !important;
+      text-shadow: none;
+      -webkit-text-fill-color: var(--color-sapphire);
+    }
   </style>
 </head>
 <body>
@@ -588,30 +661,36 @@
       <div class="input-section no-print">
         <div class="row g-3 align-items-end">
           <div class="col-lg-8 col-md-7 col-12">
-            <label for="dob" class="form-label small-muted fw-semibold">
-              <i class="bi bi-calendar3"></i>Date of Birth | জন্ম তারিখ
+            <!-- Name Input - NOW MANDATORY -->
+            <label for="personName" class="form-label small-muted fw-semibold required-field">
+              <i class="bi bi-person text-sapphire"></i>Name | নাম
             </label>
-            <input id="dob" type="date" class="form-control no-print form-control-lg" />
+            <input id="personName" type="text" class="form-control no-print form-control-lg" placeholder="Enter your name" required />
             
-            <!-- Birth Time Input -->
+            <label for="dob" class="form-label small-muted fw-semibold mt-3 required-field">
+              <i class="bi bi-calendar3 text-emerald"></i>Date of Birth | জন্ম তারিখ
+            </label>
+            <input id="dob" type="date" class="form-control no-print form-control-lg" required />
+            
+            <!-- Birth Time Input - NOW MANDATORY -->
             <div class="birth-time-input no-print">
-              <label class="form-label small-muted fw-semibold">
-                <i class="bi bi-clock"></i>Birth Time | জন্ম সময় (Optional)
+              <label class="form-label small-muted fw-semibold required-field">
+                <i class="bi bi-clock text-amethyst"></i>Birth Time | জন্ম সময়
               </label>
               <div class="row g-2 align-items-center">
                 <div class="col-md-4 col-12">
-                  <input type="time" id="birthTime" class="form-control" value="00:00">
+                  <input type="time" id="birthTime" class="form-control" value="00:00" required>
                 </div>
                 <div class="col-md-8 col-12">
                   <div class="form-text">
-                    <i class="bi bi-info-circle"></i> Select your birth time for precise calculation
+                    <i class="bi bi-info-circle text-silver"></i> Select your birth time for precise calculation
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="form-text small-muted mt-1">
-              <i class="bi bi-info-circle"></i>Select your birth date and time for accurate age calculation
+              <i class="bi bi-info-circle text-silver"></i>Select your birth date and time for accurate age calculation
             </div>
           </div>
           <div class="col-lg-4 col-md-5 col-12 d-grid">
@@ -626,7 +705,7 @@
         <div class="row mt-4 no-print">
           <div class="col-12">
             <label class="form-label small-muted fw-semibold mb-2">
-              <i class="bi bi-lightning"></i>Quick Examples:
+              <i class="bi bi-lightning text-amber"></i>Quick Examples:
             </label>
             <div class="d-flex flex-wrap gap-2">
               <button class="btn btn-sm btn-outline-primary example-date" data-date="1990-01-01">
@@ -647,12 +726,15 @@
       </div>
 
       <div id="result" style="display:none;margin-top:30px">
+        <!-- Name Display - Visible in Print -->
+        <div id="nameDisplay" class="name-display"></div>
+        
         <!-- Calendar Section - Hidden in Print -->
         <div class="row calendar-section">
           <div class="col-md-6 col-12 mb-3">
             <div class="calendar-box h-100">
-              <div class="calendar-title professional-title">
-                <i class="bi bi-calendar-check"></i>Current Date & Time | বর্তমান তারিখ ও সময়
+              <div class="calendar-title">
+                <i class="bi bi-calendar-check text-sapphire"></i>Current Date & Time | বর্তমান তারিখ ও সময়
               </div>
               <div id="currentCalendar" class="date-display fs-5"></div>
               <div id="currentCalendarDetail" class="date-detail small-muted mt-2"></div>
@@ -661,8 +743,8 @@
 
           <div class="col-md-6 col-12 mb-3">
             <div class="calendar-box h-100">
-              <div class="calendar-title professional-title">
-                <i class="bi bi-gift"></i>Birth Date & Time | জন্ম তারিখ ও সময়
+              <div class="calendar-title">
+                <i class="bi bi-gift text-emerald"></i>Birth Date & Time | জন্ম তারিখ ও সময়
               </div>
               <div id="dobCalendar" class="date-display fs-5"></div>
               <div id="dobCalendarDetail" class="date-detail small-muted mt-2"></div>
@@ -675,47 +757,47 @@
         <!-- Zodiac Sign - Hidden in Print -->
         <div class="mb-4 zodiac-info">
           <h5 class="text-info section-title">
-            <i class="bi bi-stars"></i>Zodiac Information | রাশিচক্র
+            <i class="bi bi-stars text-topaz"></i>Zodiac Information | রাশিচক্র
           </h5>
           <div id="zodiacInfo" class="small-muted"></div>
         </div>
 
         <h5 class="text-info section-title">
-          <i class="bi bi-graph-up"></i>Age Analysis | বয়স বিশ্লেষণ
+          <i class="bi bi-graph-up text-sapphire"></i>Age Analysis | বয়স বিশ্লেষণ
         </h5>
         <div class="row">
           <div class="col-12">
             <ul class="list-group">
               <li class="list-group-item small-muted">
-                <i class="bi bi-person"></i>Chronological Age: 
+                <i class="bi bi-person text-sapphire"></i>Chronological Age: 
                 <span id="years" class="highlight"></span> years, 
                 <span id="months" class="highlight"></span> months, 
                 <span id="days" class="highlight"></span> days
               </li>
               <li class="list-group-item small-muted">
-                <i class="bi bi-calendar-month"></i>Total Duration: 
+                <i class="bi bi-calendar-month text-emerald"></i>Total Duration: 
                 <span id="totalMonths" class="highlight"></span> months, 
                 <span id="extraDays" class="highlight"></span> days
               </li>
               <li class="list-group-item small-muted">
-                <i class="bi bi-calendar-week"></i>Weekly Breakdown: 
+                <i class="bi bi-calendar-week text-amethyst"></i>Weekly Breakdown: 
                 <span id="weeks" class="highlight"></span> weeks, 
                 <span id="weekDays" class="highlight"></span> days
               </li>
               <li class="list-group-item small-muted">
-                <i class="bi bi-calendar-day"></i>Cumulative Days: 
+                <i class="bi bi-calendar-day text-amber"></i>Cumulative Days: 
                 <span id="totalDays" class="highlight"></span> days
               </li>
               <li class="list-group-item small-muted">
-                <i class="bi bi-clock"></i>Hours Lived: 
+                <i class="bi bi-clock text-ruby"></i>Hours Lived: 
                 <span id="hours" class="highlight"></span> hours
               </li>
               <li class="list-group-item small-muted">
-                <i class="bi bi-clock-history"></i>Minutes Lived: 
+                <i class="bi bi-clock-history text-coral"></i>Minutes Lived: 
                 <span id="minutes" class="highlight"></span> minutes
               </li>
               <li class="list-group-item small-muted">
-                <i class="bi bi-stopwatch"></i>Seconds Lived: 
+                <i class="bi bi-stopwatch text-gold"></i>Seconds Lived: 
                 <span id="seconds" class="highlight"></span> seconds
               </li>
             </ul>
@@ -725,29 +807,29 @@
         <!-- NEXT BIRTHDAY FOOTER - Visible in Print -->
         <div class="mt-4 border-top pt-4 birthday-countdown">
           <h5 class="text-success section-title">
-            <i class="bi bi-balloon"></i>Next Birthday Analysis | পরবর্তী জন্মদিন
+            <i class="bi bi-balloon text-jade"></i>Next Birthday Analysis | পরবর্তী জন্মদিন
           </h5>
           <p class="small-muted mb-3">
-            <i class="bi bi-calendar-event"></i>Upcoming Birthday: 
+            <i class="bi bi-calendar-event text-topaz"></i>Upcoming Birthday: 
             <span id="nextBirthdayDate" class="highlight"></span>
           </p>
           <div class="row">
             <div class="col-12">
               <ul class="list-group">
                 <li class="list-group-item small-muted countdown-item">
-                  <i class="bi bi-sun"></i>Days Remaining: 
+                  <i class="bi bi-sun text-jade"></i>Days Remaining: 
                   <span id="daysLeft" class="highlight"></span>
                 </li>
                 <li class="list-group-item small-muted countdown-item">
-                  <i class="bi bi-clock"></i>Hours Remaining: 
+                  <i class="bi bi-clock text-topaz"></i>Hours Remaining: 
                   <span id="hoursLeft" class="highlight"></span>
                 </li>
                 <li class="list-group-item small-muted countdown-item">
-                  <i class="bi bi-hourglass-split"></i>Minutes Remaining: 
+                  <i class="bi bi-hourglass-split text-bronze"></i>Minutes Remaining: 
                   <span id="minutesLeft" class="highlight"></span>
                 </li>
                 <li class="list-group-item small-muted countdown-item">
-                  <i class="bi bi-stopwatch"></i>Seconds Remaining: 
+                  <i class="bi bi-stopwatch text-platinum"></i>Seconds Remaining: 
                   <span id="secondsLeft" class="highlight"></span>
                 </li>
               </ul>
@@ -758,7 +840,7 @@
         <!-- Action Buttons -->
         <div class="action-buttons no-print">
           <h5 class="text-center section-title mb-4">
-            <i class="bi bi-share"></i>Share & Export | শেয়ার ও এক্সপোর্ট
+            <i class="bi bi-share text-amethyst"></i>Share & Export | শেয়ার ও এক্সপোর্ট
           </h5>
           <div class="share-buttons">
             <button class="btn btn-primary share-btn" onclick="printReport()">
@@ -805,7 +887,7 @@
   </div>
 
   <script>
-    // JavaScript code remains exactly the same as previous version
+    // JavaScript code with updated zodiac function
     let dob = null;
     let intervalId = null;
 
@@ -813,6 +895,8 @@
     const resultEl = document.getElementById('result');
     const dobInput = document.getElementById('dob');
     const birthTimeInput = document.getElementById('birthTime');
+    const personNameInput = document.getElementById('personName');
+    const nameDisplayEl = document.getElementById('nameDisplay');
     const btnText = document.getElementById('btnText');
     const btnLoading = document.getElementById('btnLoading');
     const currentYearEl = document.getElementById('currentYear');
@@ -852,23 +936,21 @@
         return; 
       }
 
-      // Get time from time input
-      const timeValue = birthTimeInput.value;
-      let hours = 0, minutes = 0;
-      
-      if (timeValue) {
-        const [timeHours, timeMinutes] = timeValue.split(':');
-        hours = parseInt(timeHours) || 0;
-        minutes = parseInt(timeMinutes) || 0;
+      // Get name from input - NOW MANDATORY
+      const personName = personNameInput.value.trim();
+      if (!personName) {
+        showToast('Please enter your name.', 'warning');
+        return;
       }
 
-      // Create date with time
-      const dateTimeString = `${val}T${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`;
-      dob = new Date(dateTimeString);
-      
-      if (isNaN(dob)) { 
-        showToast('Invalid date format selected.', 'error');
-        return; 
+      // Display name in results
+      nameDisplayEl.textContent = personName;
+
+      // Get birth time - NOW MANDATORY
+      const birthTime = birthTimeInput.value;
+      if (!birthTime) {
+        showToast('Please select your birth time.', 'warning');
+        return;
       }
 
       // Show loading state
@@ -876,348 +958,340 @@
       btnLoading.style.display = 'inline-block';
 
       setTimeout(() => {
-        // Hide loading and show result
+        dob = new Date(val + 'T' + birthTime);
+        
+        // Show results
+        resultEl.style.display = 'block';
+        
+        // Hide loading state
         btnText.style.display = 'inline';
         btnLoading.style.display = 'none';
         
-        resultEl.style.display = 'block';
-        if (intervalId) clearInterval(intervalId);
+        // Start live updates
         updateAge();
+        if(intervalId) clearInterval(intervalId);
         intervalId = setInterval(updateAge, 1000);
-        
-        // Add fade-in animation to result
-        resultEl.classList.add('fade-in');
       }, 800);
     }
 
-    function pad(n){ return String(n).padStart(2,'0'); }
-
-    function formatTime(date) {
-      let hours = date.getHours();
-      let minutes = date.getMinutes();
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-      minutes = minutes < 10 ? '0'+minutes : minutes;
-      return hours + ':' + minutes + ' ' + ampm;
-    }
-
     function updateAge(){
+      if(!dob) return;
+      
       const now = new Date();
-
-      // Calendars basic display
-      document.getElementById('currentCalendar').textContent = now.toDateString() + ' ' + formatTime(now);
-      document.getElementById('currentCalendarDetail').textContent = now.toLocaleString();
-
-      document.getElementById('dobCalendar').textContent = dob.toDateString() + ' ' + formatTime(dob);
-      document.getElementById('dobCalendarDetail').textContent = dob.toLocaleString();
-
-      // Difference calculations
-      let diffMs = now - dob;
-      if (diffMs < 0) return;
-
-      // Total measures
-      const totalSeconds = Math.floor(diffMs / 1000);
-      const totalMinutes = Math.floor(totalSeconds / 60);
-      const totalHours = Math.floor(totalMinutes / 60);
-      const totalDays = Math.floor(totalHours / 24);
-      const totalWeeks = Math.floor(totalDays / 7);
-
-      // Precise years, months, days
-      const ymd = computeYMD(dob, now);
-      const years = ymd.years;
-      const months = ymd.months;
-      const days = ymd.days;
-
-      // Months total
+      const diff = now - dob;
+      
+      // Calculate years, months, days
+      let years = now.getFullYear() - dob.getFullYear();
+      let months = now.getMonth() - dob.getMonth();
+      let days = now.getDate() - dob.getDate();
+      
+      if (days < 0) {
+        months--;
+        // Get days in previous month
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+      
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+      
+      // Calculate total months and extra days
       const totalMonths = years * 12 + months;
-
-      // Update zodiac information
-      updateZodiacInfo(dob);
-
-      // Populate age breakdown
+      const extraDays = days;
+      
+      // Calculate weeks and days
+      const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const weeks = Math.floor(totalDays / 7);
+      const weekDays = totalDays % 7;
+      
+      // Calculate hours, minutes, seconds
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor(diff / (1000 * 60));
+      const seconds = Math.floor(diff / 1000);
+      
+      // Update DOM
       document.getElementById('years').textContent = years;
       document.getElementById('months').textContent = months;
       document.getElementById('days').textContent = days;
       document.getElementById('totalMonths').textContent = totalMonths;
-      document.getElementById('extraDays').textContent = days;
-      document.getElementById('weeks').textContent = totalWeeks;
-      document.getElementById('weekDays').textContent = totalDays % 7;
-      document.getElementById('totalDays').textContent = totalDays;
-      document.getElementById('hours').textContent = totalHours.toLocaleString();
-      document.getElementById('minutes').textContent = totalMinutes.toLocaleString();
-      document.getElementById('seconds').textContent = totalSeconds.toLocaleString();
-
-      // Next birthday calculation
-      updateBirthdayCountdown(now);
-    }
-
-    function updateBirthdayCountdown(now) {
-      let nextB = new Date(now.getFullYear(), dob.getMonth(), dob.getDate(), dob.getHours(), dob.getMinutes(), 0, 0);
-      if (nextB <= now) nextB.setFullYear(nextB.getFullYear() + 1);
-      document.getElementById('nextBirthdayDate').textContent = nextB.toDateString() + ' ' + formatTime(nextB);
-
-      let timeToB = nextB - now;
-      let secLeft = Math.floor(timeToB / 1000);
-      let minLeft = Math.floor(secLeft / 60);
-      let hrLeft = Math.floor(minLeft / 60);
-      let dayLeft = Math.floor(hrLeft / 24);
-
-      hrLeft = hrLeft % 24;
-      minLeft = minLeft % 60;
-      secLeft = secLeft % 60;
-
-      // Animate countdown changes
-      animateCountdownValue('daysLeft', dayLeft);
-      animateCountdownValue('hoursLeft', pad(hrLeft));
-      animateCountdownValue('minutesLeft', pad(minLeft));
-      animateCountdownValue('secondsLeft', pad(secLeft));
-    }
-
-    function animateCountdownValue(elementId, newValue) {
-      const element = document.getElementById(elementId);
-      if (element.textContent !== newValue.toString()) {
-        element.parentElement.classList.add('countdown-pulse');
-        element.textContent = newValue;
-        setTimeout(() => {
-          element.parentElement.classList.remove('countdown-pulse');
-        }, 1000);
-      }
-    }
-
-    function updateZodiacInfo(birthDate) {
-      const zodiac = getZodiacSign(birthDate);
-      const birthstone = getBirthstone(birthDate.getMonth());
+      document.getElementById('extraDays').textContent = extraDays;
+      document.getElementById('weeks').textContent = weeks;
+      document.getElementById('weekDays').textContent = weekDays;
+      document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+      document.getElementById('hours').textContent = hours.toLocaleString();
+      document.getElementById('minutes').textContent = minutes.toLocaleString();
+      document.getElementById('seconds').textContent = seconds.toLocaleString();
       
-      document.getElementById('zodiacInfo').innerHTML = `
+      // Update current date display
+      document.getElementById('currentCalendar').textContent = now.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      document.getElementById('currentCalendarDetail').textContent = now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit' 
+      });
+      
+      // Update birth date display
+      document.getElementById('dobCalendar').textContent = dob.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      document.getElementById('dobCalendarDetail').textContent = dob.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit' 
+      });
+      
+      // Update next birthday countdown
+      updateNextBirthdayCountdown(now);
+      
+      // Update zodiac information
+      updateZodiacInfo();
+    }
+
+    function updateNextBirthdayCountdown(now) {
+      const nextBirthday = new Date(now.getFullYear(), dob.getMonth(), dob.getDate());
+      if (nextBirthday < now) {
+        nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+      }
+      
+      document.getElementById('nextBirthdayDate').textContent = nextBirthday.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      
+      const diff = nextBirthday - now;
+      const daysLeft = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hoursLeft = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutesLeft = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secondsLeft = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('daysLeft').textContent = daysLeft;
+      document.getElementById('hoursLeft').textContent = hoursLeft;
+      document.getElementById('minutesLeft').textContent = minutesLeft;
+      document.getElementById('secondsLeft').textContent = secondsLeft;
+    }
+
+    // Updated zodiac function with Bengali names
+    function updateZodiacInfo() {
+      const month = dob.getMonth() + 1; // JavaScript months are 0-indexed
+      const day = dob.getDate();
+      let zodiacSign = '';
+      let zodiacBengali = '';
+      let zodiacDates = '';
+      
+      if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+        zodiacSign = 'Aries';
+        zodiacBengali = 'মেষ';
+        zodiacDates = 'March 21 - April 19';
+      } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+        zodiacSign = 'Taurus';
+        zodiacBengali = 'বৃষ';
+        zodiacDates = 'April 20 - May 20';
+      } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
+        zodiacSign = 'Gemini';
+        zodiacBengali = 'মিথুন';
+        zodiacDates = 'May 21 - June 20';
+      } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
+        zodiacSign = 'Cancer';
+        zodiacBengali = 'কর্কট';
+        zodiacDates = 'June 21 - July 22';
+      } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+        zodiacSign = 'Leo';
+        zodiacBengali = 'সিংহ';
+        zodiacDates = 'July 23 - August 22';
+      } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+        zodiacSign = 'Virgo';
+        zodiacBengali = 'কন্যা';
+        zodiacDates = 'August 23 - September 22';
+      } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
+        zodiacSign = 'Libra';
+        zodiacBengali = 'তুলা';
+        zodiacDates = 'September 23 - October 22';
+      } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
+        zodiacSign = 'Scorpio';
+        zodiacBengali = 'বৃশ্চিক';
+        zodiacDates = 'October 23 - November 21';
+      } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+        zodiacSign = 'Sagittarius';
+        zodiacBengali = 'ধনু';
+        zodiacDates = 'November 22 - December 21';
+      } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+        zodiacSign = 'Capricorn';
+        zodiacBengali = 'মকর';
+        zodiacDates = 'December 22 - January 19';
+      } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+        zodiacSign = 'Aquarius';
+        zodiacBengali = 'কুম্ভ';
+        zodiacDates = 'January 20 - February 18';
+      } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+        zodiacSign = 'Pisces';
+        zodiacBengali = 'মীন';
+        zodiacDates = 'February 19 - March 20';
+      }
+      
+      const zodiacInfoEl = document.getElementById('zodiacInfo');
+      zodiacInfoEl.innerHTML = `
         <div class="zodiac-sign">
-          <span>${zodiac.symbol}</span>
-          <span><strong>${zodiac.name}</strong> | <strong class="bengali-font">${zodiac.bengaliName}</strong> (${zodiac.dates})</span>
+          <span class="fw-bold text-sapphire">${zodiacSign}</span>
+          <span class="bengali-font text-emerald">${zodiacBengali}</span>
+          <span class="text-silver">(${zodiacDates})</span>
         </div>
-        <div class="mt-2"><i class="bi bi-gem"></i> Birthstone: ${birthstone}</div>
       `;
     }
 
-    function getZodiacSign(date) {
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
+    // Toast notification function
+    function showToast(message, type = 'info') {
+      const toastContainer = document.querySelector('.toast-container');
+      const toastId = 'toast-' + Date.now();
       
-      const signs = [
-        { name: "Capricorn", bengaliName: "মকর", symbol: "♑", dates: "Dec 22 - Jan 19" },
-        { name: "Aquarius", bengaliName: "কুম্ভ", symbol: "♒", dates: "Jan 20 - Feb 18" },
-        { name: "Pisces", bengaliName: "মীন", symbol: "♓", dates: "Feb 19 - Mar 20" },
-        { name: "Aries", bengaliName: "মেষ", symbol: "♈", dates: "Mar 21 - Apr 19" },
-        { name: "Taurus", bengaliName: "বৃষ", symbol: "♉", dates: "Apr 20 - May 20" },
-        { name: "Gemini", bengaliName: "মিথুন", symbol: "♊", dates: "May 21 - Jun 20" },
-        { name: "Cancer", bengaliName: "কর্কট", symbol: "♋", dates: "Jun 21 - Jul 22" },
-        { name: "Leo", bengaliName: "সিংহ", symbol: "♌", dates: "Jul 23 - Aug 22" },
-        { name: "Virgo", bengaliName: "কন্যা", symbol: "♍", dates: "Aug 23 - Sep 22" },
-        { name: "Libra", bengaliName: "তুলা", symbol: "♎", dates: "Sep 23 - Oct 22" },
-        { name: "Scorpio", bengaliName: "বৃশ্চিক", symbol: "♏", dates: "Oct 23 - Nov 21" },
-        { name: "Sagittarius", bengaliName: "ধনু", symbol: "♐", dates: "Nov 22 - Dec 21" }
-      ];
-
-      if ((month == 1 && day <= 19) || (month == 12 && day >= 22)) return signs[0];
-      if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return signs[1];
-      if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return signs[2];
-      if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return signs[3];
-      if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return signs[4];
-      if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return signs[5];
-      if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return signs[6];
-      if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return signs[7];
-      if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return signs[8];
-      if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return signs[9];
-      if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return signs[10];
-      return signs[11];
+      const toast = document.createElement('div');
+      toast.className = `toast align-items-center text-bg-${type} border-0`;
+      toast.id = toastId;
+      toast.setAttribute('role', 'alert');
+      toast.setAttribute('aria-live', 'assertive');
+      toast.setAttribute('aria-atomic', 'true');
+      
+      toast.innerHTML = `
+        <div class="d-flex">
+          <div class="toast-body">
+            <i class="bi bi-${getToastIcon(type)} me-2"></i>${message}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      `;
+      
+      toastContainer.appendChild(toast);
+      
+      const bsToast = new bootstrap.Toast(toast, { delay: 4000 });
+      bsToast.show();
+      
+      // Remove toast from DOM after it's hidden
+      toast.addEventListener('hidden.bs.toast', () => {
+        toast.remove();
+      });
     }
-
-    function getBirthstone(month) {
-      const stones = [
-        "Garnet", "Amethyst", "Aquamarine", "Diamond", 
-        "Emerald", "Pearl", "Ruby", "Peridot", 
-        "Sapphire", "Tourmaline", "Topaz", "Turquoise"
-      ];
-      return stones[month];
-    }
-
-    function computeYMD(from, to){
-      const f = new Date(from.getFullYear(), from.getMonth(), from.getDate());
-      const t = new Date(to.getFullYear(), to.getMonth(), to.getDate());
-      let years = t.getFullYear() - f.getFullYear();
-      let months = t.getMonth() - f.getMonth();
-      let days = t.getDate() - f.getDate();
-
-      if (days < 0){
-        months -= 1;
-        const prevMonth = new Date(t.getFullYear(), t.getMonth(), 0).getDate();
-        days += prevMonth;
+    
+    function getToastIcon(type) {
+      switch(type) {
+        case 'success': return 'check-circle';
+        case 'warning': return 'exclamation-triangle';
+        case 'danger': return 'exclamation-circle';
+        default: return 'info-circle';
       }
-      if (months < 0){
-        years -= 1;
-        months += 12;
-      }
-      return {years, months, days};
     }
 
-    // Share and Print Functions
+    // Share functions
     function printReport() {
       window.print();
     }
-
+    
     function shareToWhatsApp() {
-      const ageText = generateShareText();
-      const url = `https://wa.me/?text=${encodeURIComponent(ageText)}`;
+      const name = personNameInput.value || 'User';
+      const age = document.getElementById('years').textContent;
+      const text = `Check out my age! I'm ${age} years old. Calculated with Precision Age Calculator.`;
+      const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
       window.open(url, '_blank');
-      showToast('Opening WhatsApp...', 'success');
     }
-
+    
     function shareToTelegram() {
-      const ageText = generateShareText();
-      const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(ageText)}`;
+      const name = personNameInput.value || 'User';
+      const age = document.getElementById('years').textContent;
+      const text = `Check out my age! I'm ${age} years old. Calculated with Precision Age Calculator.`;
+      const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`;
       window.open(url, '_blank');
-      showToast('Opening Telegram...', 'success');
     }
-
+    
     function shareToFacebook() {
-      const ageText = generateShareText();
-      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(ageText)}`;
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
       window.open(url, '_blank');
-      showToast('Opening Facebook...', 'success');
     }
-
+    
     function shareToTwitter() {
-      const ageText = generateShareText();
-      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(ageText)}`;
+      const name = personNameInput.value || 'User';
+      const age = document.getElementById('years').textContent;
+      const text = `I'm ${age} years old! Check out this cool age calculator.`;
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
       window.open(url, '_blank');
-      showToast('Opening Twitter...', 'success');
     }
-
+    
+    // FIXED: Copy to Clipboard function
     function copyToClipboard() {
-      const ageText = generateShareText();
+      // Get the current age data
+      const name = personNameInput.value || 'User';
+      const years = document.getElementById('years').textContent;
+      const months = document.getElementById('months').textContent;
+      const days = document.getElementById('days').textContent;
+      const totalDays = document.getElementById('totalDays').textContent;
+      const nextBirthday = document.getElementById('nextBirthdayDate').textContent;
+      const daysLeft = document.getElementById('daysLeft').textContent;
       
+      // Create a comprehensive text to copy
+      const text = `Age Analysis for ${name}:
+• Chronological Age: ${years} years, ${months} months, ${days} days
+• Total Days Lived: ${totalDays} days
+• Next Birthday: ${nextBirthday}
+• Days Until Next Birthday: ${daysLeft} days
+
+Calculated with Precision Age Calculator`;
+
+      // Use the modern Clipboard API
       if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(ageText).then(() => {
-          showToast('Age analysis copied to clipboard!', 'success');
-        }).catch(err => {
-          fallbackCopyToClipboard(ageText);
-        });
+        // Use the modern clipboard API
+        navigator.clipboard.writeText(text)
+          .then(() => {
+            showToast('Age details copied to clipboard!', 'success');
+          })
+          .catch(err => {
+            // Fallback for older browsers
+            fallbackCopyToClipboard(text);
+          });
       } else {
-        fallbackCopyToClipboard(ageText);
+        // Fallback for older browsers
+        fallbackCopyToClipboard(text);
       }
     }
 
+    // Fallback method for older browsers
     function fallbackCopyToClipboard(text) {
-      const textArea = document.createElement("textarea");
+      const textArea = document.createElement('textarea');
       textArea.value = text;
-      textArea.style.position = "fixed";
-      textArea.style.left = "-999999px";
-      textArea.style.top = "-999999px";
+      
+      // Make the textarea out of viewport
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
       
       try {
         const successful = document.execCommand('copy');
-        document.body.removeChild(textArea);
         if (successful) {
-          showToast('Age analysis copied to clipboard!', 'success');
+          showToast('Age details copied to clipboard!', 'success');
         } else {
-          showToast('Failed to copy text. Please copy manually.', 'error');
+          showToast('Failed to copy to clipboard. Please copy manually.', 'warning');
         }
       } catch (err) {
-        document.body.removeChild(textArea);
-        showToast('Failed to copy text. Please copy manually.', 'error');
-      }
-    }
-
-    function generateShareText() {
-      const years = document.getElementById('years').textContent;
-      const months = document.getElementById('months').textContent;
-      const days = document.getElementById('days').textContent;
-      const totalDays = document.getElementById('totalDays').textContent;
-      
-      return `🎉 Age Analysis Results:
-
-📅 Chronological Age: ${years} years, ${months} months, ${days} days
-📊 Total Days Lived: ${totalDays} days
-
-Calculate your age at: ${window.location.href}
-
-#AgeCalculator #BirthdayAnalysis`;
-    }
-
-    // Toast Notification System
-    function showToast(message, type = 'info') {
-      const toastContainer = document.querySelector('.toast-container');
-      const toastId = 'toast-' + Date.now();
-      
-      const bgClass = {
-        'success': 'bg-success',
-        'error': 'bg-danger',
-        'warning': 'bg-warning',
-        'info': 'bg-info'
-      }[type] || 'bg-info';
-
-      const toastHTML = `
-        <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0" role="alert">
-          <div class="d-flex">
-            <div class="toast-body">
-              <i class="bi ${getToastIcon(type)} me-2"></i>${message}
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-          </div>
-        </div>
-      `;
-      
-      toastContainer.insertAdjacentHTML('beforeend', toastHTML);
-      
-      const toastElement = document.getElementById(toastId);
-      const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
-      toast.show();
-      
-      toastElement.addEventListener('hidden.bs.toast', () => {
-        toastElement.remove();
-      });
-    }
-
-    function getToastIcon(type) {
-      const icons = {
-        'success': 'bi-check-circle-fill',
-        'error': 'bi-exclamation-circle-fill',
-        'warning': 'bi-exclamation-triangle-fill',
-        'info': 'bi-info-circle-fill'
-      };
-      return icons[type] || 'bi-info-circle-fill';
-    }
-
-    // Auto-load saved preferences and date
-    (function(){
-      detectSystemTheme();
-
-      const savedDate = localStorage.getItem('agecalc_dob');
-      const savedTime = localStorage.getItem('agecalc_time');
-
-      if (savedDate) {
-        dobInput.value = savedDate;
-      }
-      if (savedTime) {
-        birthTimeInput.value = savedTime;
-      }
-
-      if (savedDate) {
-        setTimeout(() => startLiveAge(), 1000);
+        showToast('Failed to copy to clipboard. Please copy manually.', 'danger');
       }
       
-      dobInput.addEventListener('change', () => {
-        localStorage.setItem('agecalc_dob', dobInput.value || '');
-      });
-      birthTimeInput.addEventListener('change', () => {
-        localStorage.setItem('agecalc_time', birthTimeInput.value);
-      });
-    })();
+      document.body.removeChild(textArea);
+    }
+
+    // Initialize system theme
+    detectSystemTheme();
   </script>
-
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
