@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Age Calculator | বয়স গণনা</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #e3f2fd, #f8f9fa);
+      padding: 20px;
+    }
+    .result-box {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-left: 6px solid #0d6efd;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #0d6efd;
+    }
+    .calendar-box {
+      background: #f1f3f5;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .calendar-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #495057;
+    }
+    .credit {
+      text-align: center;
+      margin-top: 30px;
+      font-style: italic;
+      color: #6c757d;
+    }
+    @media print {
+      body { background: #fff; }
+      .btn, input, .form-label, .form-control { display: none !important; }
+      .result-box { box-shadow: none; border: none; }
+      .credit { display: block; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center text-primary mb-4">🧮 Age Calculator | বয়স গণনা</h2>
+    <div class="mb-3">
+      <label for="dob" class="form-label">📅 Date of Birth | জন্ম তারিখ</label>
+      <input type="date" id="dob" class="form-control">
+    </div>
+    <div class="d-grid gap-2 mb-4">
+      <button onclick="startLiveAge()" class="btn btn-primary">🔍 Calculate Age | বয়স দেখুন</button>
+    </div>
+
+    <div class="result-box" id="result" style="display:none;">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="calendar-box">
+            <div class="calendar-title">📆 Current Date Calendar | বর্তমান ক্যালেন্ডার</div>
+            <div id="currentCalendar" class="highlight"></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="calendar-box">
+            <div class="calendar-title">🎂 Birth Date Calendar | জন্ম তারিখের ক্যালেন্ডার</div>
+            <div id="dobCalendar" class="highlight"></div>
+          </div>
+        </div>
+      </div>
+
+      <h5 class="mt-4 text-info">📊 Age Breakdown | বয়স বিশ্লেষণ:</h5>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">🧍 Age: <span id="years" class="highlight"></span> years, <span id="months" class="highlight"></span> months, <span id="days" class="highlight"></span> days</li>
+        <li class="list-group-item">📅 Or: <span id="totalMonths" class="highlight"></span> months, <span id="extraDays" class="highlight"></span> days</li>
+        <li class="list-group-item">📆 Or: <span id="weeks" class="highlight"></span> weeks, <span id="weekDays" class="highlight"></span> days</li>
+        <li class="list-group-item">📆 Or: <span id="totalDays" class="highlight"></span> days</li>
+        <li class="list-group-item">⏰ Or: <span id="hours" class="highlight"></span> hours</li>
+        <li class="list-group-item">⏱️ Or: <span id="minutes" class="highlight"></span> minutes</li>
+        <li class="list-group-item">⏳ Or: <span id="seconds" class="highlight"></span> seconds</li>
+      </ul>
+
+      <div class="d-grid gap-2 mb-3">
+        <button onclick="window.print()" class="btn btn-outline-secondary">🖨️ Print Result | প্রিন্ট করুন</button>
+      </div>
+      <div class="credit">*Made with LoVe by Rafis*</div>
+    </div>
+  </div>
+
+  <script>
+    let dob;
+
+    function startLiveAge() {
+      dob = new Date(document.getElementById("dob").value);
+      if (isNaN(dob)) return alert("Please select a valid date!");
+      document.getElementById("result").style.display = "block";
+      updateAge();
+      setInterval(updateAge, 1000);
+    }
+
+    function updateAge() {
+      const now = new Date();
+      document.getElementById("currentCalendar").textContent = now.toDateString();
+      document.getElementById("dobCalendar").textContent = dob.toDateString();
+
+      let diff = now - dob;
+      if (diff < 0) return;
+
+      let totalSeconds = Math.floor(diff / 1000);
+      let totalMinutes = Math.floor(totalSeconds / 60);
+      let totalHours = Math.floor(totalMinutes / 60);
+      let totalDays = Math.floor(totalHours / 24);
+      let totalWeeks = Math.floor(totalDays / 7);
+      let weekDays = totalDays % 7;
+      let totalMonths = Math.floor(totalDays / 30.44);
+      let years = Math.floor(totalMonths / 12);
+      let months = totalMonths % 12;
+      let days = totalDays % Math.floor(30.44);
+      let hours = totalHours % 24;
+      let minutes = totalMinutes % 60;
+      let seconds = totalSeconds % 60;
+
+      document.getElementById("years").textContent = years;
+      document.getElementById("months").textContent = months;
+      document.getElementById("days").textContent = days;
+      document.getElementById("totalMonths").textContent = years * 12 + months;
+      document.getElementById("extraDays").textContent = days;
+      document.getElementById("weeks").textContent = totalWeeks;
+      document.getElementById("weekDays").textContent = weekDays;
+      document.getElementById("totalDays").textContent = totalDays;
+      document.getElementById("hours").textContent = totalHours;
+      document.getElementById("minutes").textContent = totalMinutes;
+      document.getElementById("seconds").textContent = totalSeconds;
+    }
+  </script>
+</body>
+        </html>
